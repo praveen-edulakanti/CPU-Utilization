@@ -11,7 +11,6 @@ touch $LOGFILE
 for path in $PATHS
 do
 CPULOAD=`top -b -n 2 d1 | grep "Cpu(s)" | tail -n1 | awk '{print $2}' | awk -F. '{print $2}'`
-echo "`date "+%F %H:%M:%S"` OK  - $CPULOAD on Host $HOSTNAME" >> $LOGFILE
 if [ -n $WARNING -a -n $CRITICAL ]; then
 if [ "$CPULOAD" -ge "$WARNING" -a "$CPULOAD" -lt "$CRITICAL" ]; then
 echo "`date "+%F %H:%M:%S"` WARNING - $CPULOAD on Host $HOSTNAME" >> $LOGFILE
